@@ -1,13 +1,24 @@
 <?php echo form_open(); ?>
+
+
 <div class="containerform">
+
+<div class="form-group">
+   
+   <input type="hidden" name="pro_id" id="pro_id" class="form-control">
+
+</div> 
+
 <div class="form-group">
    <label for="pro_libelle">Quel est le nom de votre produit ?</label>
    <input type="text" name="pro_name" id="pro_name" class="form-control">
+   <?php echo form_error('pro_name'); ?>
 </div> 
 
 <div class="form-group">
    <label for="pro_ref">Donner une déscription à votre produit</label>
    <input type="text" name="pro_description" id="pro_description" class="form-control">
+  
 </div> 
 
 <div class="form-group">
@@ -27,7 +38,7 @@
 
 <div class="form-group">
    <label for="pro_ref">Ajouter le chemin de votre image ! exemple :("http://localhost/mvcfilrouge/assets/images/guitare1.png)</label>
-   <input type="file" name="pro_photo" id="pro_photo" class="form-control">
+   <input type="text" name="pro_photo" id="pro_photo" class="form-control">
 </div> 
 
 <button type="submit" class="btn btn-dark mt-3">Ajouter</button>    
