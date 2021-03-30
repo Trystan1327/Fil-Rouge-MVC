@@ -25,8 +25,12 @@ class Scriptajout extends CI_Controller
         $data = $this->input->post();
         
         // Définition des filtres, ici une valeur doit avoir été saisie pour le champ 'pro_ref'
-        $this->form_validation->set_rules("pro_name", "nom", "required", array("required" => "Le %s doit être obligatoire."));
-
+        $this->form_validation->set_rules("pro_name", "nom", "required", array("required" => "Ajouter le %s de votre produit."));
+        $this->form_validation->set_rules("pro_description", "Renseignez", "required", array("required" => " %s une desciption sur votre produit ici."));
+        $this->form_validation->set_rules("pro_prix_ht", "prix HT", "required", array("required" => "Le %s doit être renseigné."));
+        $this->form_validation->set_rules("pro_qtite", "quantité", "required", array("required" => "La %s est obligatoire."));
+        $this->form_validation->set_rules("pro_qtit_ale", "quantité du stock min", "required", array("required" => "La %s est obligatoire."));
+        $this->form_validation->set_rules("pro_photo", "Ajouter", "required", array("required" => " %s une photo."));
         if ($this->form_validation->run() == FALSE)
         { // Echec de la validation, on réaffiche la vue formulaire 
 

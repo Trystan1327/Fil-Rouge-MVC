@@ -20,15 +20,15 @@
     <table>
         <tr style='border:2px solid black; background-color: teal'>
                 
-            <td style='border:2px solid black; color: white'>PHOTO</td>
-            <td style='border:2px solid black; color: white'>ID</td>
-            <td style='border:2px solid black; color: white'>LIBELLE</td>
-            <td style='border:2px solid black; color: white'>DESCRIPTION</td>
+            <td style='border:2px solid black;text-align:center; color: white'>PHOTO</td>
+            <td style='border:2px solid black;text-align:center; color: white'>ID</td>
+            <td style='border:2px solid black;text-align:center; color: white'>LIBELLE</td>
+            <td style='border:2px solid black;text-align:center; color: white'>DESCRIPTION</td>
 
-            <td style='border:2px solid black; color: white'>PRIX HT</td>
-            <td style='border:2px solid black; color: white'>Quantité</td>
-            <td style='border:2px solid black; color: white'>Quantité alert</td>
-            <td style='border:2px solid black; color: white'>Id sous-categorie</td>
+            <td style='border:2px solid black;text-align:center; color: white'>PRIX HT</td>
+            <td style='border:2px solid black; text-align:center;color: white'>Quantité</td>
+            <td style='border:2px solid black;text-align:center; color: white'>Quantité alert</td>
+            <td style='border:2px solid black; text-align:center;color: white'>Id sous-categorie</td>
 
         </tr>
 

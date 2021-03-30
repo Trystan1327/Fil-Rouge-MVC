@@ -8,6 +8,8 @@ class Scriptmodif extends CI_Controller
 
     public function modif($pro_id)
     {
+
+        $this->load->view('header');
     // Chargement des assistants 'form' et 'url'
     $this->load->helper('form', 'url'); 
 
@@ -50,5 +52,7 @@ class Scriptmodif extends CI_Controller
     { // 1er appel de la page: affichage du formulaire             
        $this->load->view('modif', $aView);
     }
+    $this->load->view('footer');
 }
 }
+

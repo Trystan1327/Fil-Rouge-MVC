@@ -23,7 +23,7 @@
 
                     <div class="menu1">
                         <a href="guitare.php" id="color">Infos</a>
-                        <a href="guitare.php" id="color">Espace Client</a>
+                        <a href="<?php echo site_url("form/myform"); ?>" id="color">Espace Client</a>
                         <a href="page2.html"><img src="<?php echo base_url("assets/images/panier.png"); ?>" alt="panier" id="panier"></a>
                         <a href="guitare.php" id="pays"><img src="<?php echo base_url("assets/images/pays.png"); ?>"  class="img-fluid" alt="Responsive image"id="pays"></a>
                     </div>

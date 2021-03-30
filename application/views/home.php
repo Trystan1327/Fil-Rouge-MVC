@@ -12,7 +12,7 @@
             </div>
             
             <div class="photocentre">
-                <img src="<?php echo base_url("assets/images/pictos.png"); ?>" class="img-fluid"  width="100%" style="margin-top: 40px;" Responsive image" id="picto">
+                <img src="<?php echo base_url("assets/images/pictos.png"); ?>" class="img-fluid"  width="100%" style="margin-top: 40px;" alt="Responsive image" id="picto">
             </div>
 
             <div class="cat">

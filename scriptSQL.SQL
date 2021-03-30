@@ -65,7 +65,7 @@ CREATE TABLE commande(
    cmde_type_payements DECIMAL(15,2),
    cli_id INT NOT NULL,
    PRIMARY KEY(cmde_id),
-   FOREIGN KEY(cli_id) REFERENCES client(cli_id)
+   FOREIGN KEY(cli_id) REFERENCES client(cli_id) 
 );
 
 CREATE TABLE produits(
@@ -91,8 +91,8 @@ CREATE TABLE Livraison(
 );
 
 CREATE TABLE fourni(
-   pro_id INT AUTO_INCREMENT NOT NULL,
-   fou_id INT,
+   pro_id INT ,
+   fou_id INT AUTO_INCREMENT NOT NULL,
    prix_achat VARCHAR(50),
    qtite INT,
    date_com DATE,
@@ -103,7 +103,7 @@ CREATE TABLE fourni(
 );
 
 CREATE TABLE composer(
-   pro_id INT,
+   pro_id INT AUTO_INCREMENT NOT NULL,
    cmde_id INT,
    PRIMARY KEY(pro_id, cmde_id),
    FOREIGN KEY(pro_id) REFERENCES produits(pro_id),
@@ -111,7 +111,7 @@ CREATE TABLE composer(
 );
 
 CREATE TABLE contient(
-   pro_id INT,
+   pro_id INT AUTO_INCREMENT NOT NULL,
    livraison_id INT,
    PRIMARY KEY(pro_id, livraison_id),
    FOREIGN KEY(pro_id) REFERENCES produits(pro_id),
@@ -119,8 +119,8 @@ CREATE TABLE contient(
 );
 
 CREATE TABLE cataloguer(
-   sous_cat_id INT,
-   cat_id INT,
+   sous_cat_id INT AUTO_INCREMENT NOT NULL ,
+   cat_id INT ,
    PRIMARY KEY(sous_cat_id, cat_id),
    FOREIGN KEY(sous_cat_id) REFERENCES sous_cat(sous_cat_id),
    FOREIGN KEY(cat_id) REFERENCES categorie(cat_id)
