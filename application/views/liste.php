@@ -28,7 +28,7 @@
             <td style='border:2px solid black;text-align:center; color: white'>PRIX HT</td>
             <td style='border:2px solid black; text-align:center;color: white'>Quantité</td>
             <td style='border:2px solid black;text-align:center; color: white'>Quantité alert</td>
-            <td style='border:2px solid black; text-align:center;color: white'>Id sous-categorie</td>
+            <td style='border:2px solid black; text-align:center;color: white'>Id categorie</td>
 
         </tr>
 
@@ -37,13 +37,13 @@
         {
         ?>
             <tr>
-                <td style='border:2px solid black;'><img src="<?= $row->pro_photo?>"></td>
+                <td style='border:2px solid black;'><img src="<?= site_url( "../assets/images/").$row->pro_photo?>"></td>
                 <td style='border:2px solid black;text-align:center;'><?= $row->pro_id ?></td>
                 <td style="border:2px solid black;text-align:center;"><a href="<?= site_url("scriptmodif/modif").'/'.$row->pro_id?>" title="<?= $row->pro_name ?>"><?= $row->pro_name ?></a></td>                <td style='border:2px solid black;text-align:center;'><?= $row->pro_description ?></td>
                 <td style='border:2px solid black;text-align:center;'><?= $row->pro_prix_ht ?></td>
                 <td style='border:2px solid black;text-align:center;'><?= $row->pro_qtite ?></td>
                 <td style='border:2px solid black;text-align:center;'><?=$row->pro_qtit_ale ?></td>
-                <td style='border:2px solid black;text-align:center;'><?= $row->sous_cat_id ?></td>
+                <td style='border:2px solid black;text-align:center;'><?= $row->cat_id ?></td>
             </tr>
         <?php
             }

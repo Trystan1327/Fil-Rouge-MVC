@@ -19,11 +19,11 @@ class Form extends CI_Controller
 
                 if ($this->input->post()) 
                 { // 2ème appel de la page: traitement du formulaire
-             
-                     $data = $this->input->post();
-                     
+
+                    $data = $this->input->post();
+
                 $this->form_validation->set_rules('u_nom', 'nom', 'required|is_unique[utilisateurs.u_nom]',
-                         array(
+                        array(
                             "required" => "Ajouter un %s.",
                             "is_unique" => "Ce %s existe déjà."
                             )

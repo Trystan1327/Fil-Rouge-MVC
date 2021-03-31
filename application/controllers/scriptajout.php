@@ -15,11 +15,14 @@ class Scriptajout extends CI_Controller
 
    // Chargement de la librairie 'database'
    $this->load->database(); 
-
+   $resultcat = $this->db->query("SELECT * FROM categorie");
+   
+   $aListecat = $resultcat->result();
+   $aView["liste_categorie"] = $aListecat;
    // Chargement de la librairie form_validation
    $this->load->library('form_validation'); 
 
-   if ($this->input->post()) 
+    if ($this->input->post()) 
    { // 2ème appel de la page: traitement du formulaire
 
         $data = $this->input->post();
@@ -34,7 +37,7 @@ class Scriptajout extends CI_Controller
         if ($this->form_validation->run() == FALSE)
         { // Echec de la validation, on réaffiche la vue formulaire 
 
-              $this->load->view('ajouter');
+            $this->load->view('ajouter', $aView);
         }
         else
         { // La validation a réussi, nos valeurs sont bonnes, on peut insérer en base
@@ -46,7 +49,7 @@ class Scriptajout extends CI_Controller
     } 
     else 
     { // 1er appel de la page: affichage du formulaire
-           $this->load->view('ajouter');
+        $this->load->view('ajouter', $aView);
     }
         $this->load->view('footer');
     }

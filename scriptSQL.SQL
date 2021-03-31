@@ -1,7 +1,10 @@
 
-DROP DATABASE mvcvillagegreen;
+DROP DATABASE IF EXISTS mvcvillagegreen;
+
 
 CREATE DATABASE mvcvillagegreen;
+
+USE mvcvillagegreen;
 
 CREATE TABLE fournisseur(
    fou_id INT AUTO_INCREMENT NOT NULL,
@@ -14,18 +17,13 @@ CREATE TABLE fournisseur(
    PRIMARY KEY(fou_id)
 );
 
-CREATE TABLE sous_cat(
-   sous_cat_id INT  AUTO_INCREMENT NOT NULL,
-   sous_cat_nom VARCHAR(50),
-   sous_cat_desc VARCHAR(50),
-   PRIMARY KEY(sous_cat_id)
-);
-
 CREATE TABLE categorie(
    cat_id INT AUTO_INCREMENT NOT NULL,
    cat_nom VARCHAR(50),
    cat_desc VARCHAR(255),
-   PRIMARY KEY(cat_id)
+   cat_paren_id INT NULL,
+   PRIMARY KEY(cat_id),
+   FOREIGN KEY(cat_paren_id) REFERENCES categorie(cat_id)
 );
 
 CREATE TABLE commerciaux(
@@ -59,13 +57,13 @@ CREATE TABLE commande(
    cmde_id INT AUTO_INCREMENT NOT NULL,
    cmde_date DATE,
    cmde_date_payements DATE,
-   cmde_prix_ttc DECIMAL(15,2),
+   cmde_reduc_total DECIMAL(5,2),
    cmde_adress_livraison VARCHAR(50),
    cmde_adress_facturation VARCHAR(50),
    cmde_type_payements DECIMAL(15,2),
    cli_id INT NOT NULL,
    PRIMARY KEY(cmde_id),
-   FOREIGN KEY(cli_id) REFERENCES client(cli_id) 
+   FOREIGN KEY(cli_id) REFERENCES client(cli_id)
 );
 
 CREATE TABLE produits(
@@ -76,9 +74,9 @@ CREATE TABLE produits(
    pro_qtite INT,
    pro_qtit_ale INT,
    pro_photo VARCHAR(255),
-   sous_cat_id INT NOT NULL,
+   cat_id INT NOT NULL,
    PRIMARY KEY(pro_id),
-   FOREIGN KEY(sous_cat_id) REFERENCES sous_cat(sous_cat_id)
+   FOREIGN KEY(cat_id) REFERENCES categorie(cat_id)
 );
 
 CREATE TABLE Livraison(
@@ -91,8 +89,8 @@ CREATE TABLE Livraison(
 );
 
 CREATE TABLE fourni(
-   pro_id INT ,
-   fou_id INT AUTO_INCREMENT NOT NULL,
+   pro_id INT,
+   fou_id INT,
    prix_achat VARCHAR(50),
    qtite INT,
    date_com DATE,
@@ -103,25 +101,18 @@ CREATE TABLE fourni(
 );
 
 CREATE TABLE composer(
-   pro_id INT AUTO_INCREMENT NOT NULL,
+   pro_id INT,
    cmde_id INT,
+   qtite_com INT,
    PRIMARY KEY(pro_id, cmde_id),
    FOREIGN KEY(pro_id) REFERENCES produits(pro_id),
    FOREIGN KEY(cmde_id) REFERENCES commande(cmde_id)
 );
 
 CREATE TABLE contient(
-   pro_id INT AUTO_INCREMENT NOT NULL,
+   pro_id INT,
    livraison_id INT,
    PRIMARY KEY(pro_id, livraison_id),
    FOREIGN KEY(pro_id) REFERENCES produits(pro_id),
    FOREIGN KEY(livraison_id) REFERENCES Livraison(livraison_id)
-);
-
-CREATE TABLE cataloguer(
-   sous_cat_id INT AUTO_INCREMENT NOT NULL ,
-   cat_id INT ,
-   PRIMARY KEY(sous_cat_id, cat_id),
-   FOREIGN KEY(sous_cat_id) REFERENCES sous_cat(sous_cat_id),
-   FOREIGN KEY(cat_id) REFERENCES categorie(cat_id)
 );

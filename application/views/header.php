@@ -16,7 +16,6 @@
                 <div class="col">
                     
                         <a href="<?php echo site_url("scripthome/home"); ?>"><img src="<?php echo base_url("assets/images/logo.png"); ?>" class="img-fluid" alt="Responsive image" id="logo"></a>
-                   
                 </div>
 
                 <div class="col-12">
@@ -29,7 +28,7 @@
                     </div>
                     
                     <div class="menu2">
-                       <a href="<?php echo site_url("scriptliste/liste"); ?>" id="color2">Produit</a>
+                        <a href="<?php echo site_url("scriptliste/liste"); ?>" id="color2">Produit</a>
                             <a href="guitare.php" id="color2">Service</a>
                             <a href="guitare.php" id="color2">Aide</a>
                             <a href="guitare.php" id="color2">A propos</a>
