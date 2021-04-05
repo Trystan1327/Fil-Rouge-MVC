@@ -22,25 +22,52 @@ class Form extends CI_Controller
 
                     $data = $this->input->post();
 
-                $this->form_validation->set_rules('u_nom', 'nom', 'required|is_unique[utilisateurs.u_nom]',
+                $this->form_validation->set_rules('cli_nom', 'nom', 'required|is_unique[client.cli_nom]',
                         array(
                             "required" => "Ajouter un %s.",
                             "is_unique" => "Ce %s existe déjà."
                             )
                         );
-                $this->form_validation->set_rules('u_prenom', 'prenom', 'required',
+
+                $this->form_validation->set_rules('cli_prenom', 'prenom', 'required',
                         array(
                             "required" => "Ajouter un %s."
                             )
                         );
-                $this->form_validation->set_rules('u_mdp', 'mot de passe', 'trim|required|min_length[8]|max_length[12]',
+                $this->form_validation->set_rules('cli_type', 'type', 'required',
+                        array(
+                            "required" => "Ajouter le %s."
+                            )
+                        );
+
+                $this->form_validation->set_rules('cli_adresse', 'l\'adresse', 'required',
+                        array(
+                            "required" => "Ajouter %s."
+                            )
+                        );
+
+                $this->form_validation->set_rules('cli_codepostal', 'code postale', 'required',
+                        array(
+                            "required" => "Ajouter le %s."
+                            )
+                        );        
+
+                        
+                $this->form_validation->set_rules('cli_ville', 'ville', 'required',
+                array(
+                    "required" => "Ajouter la %s."
+                    )
+                );     
+
+                        
+                $this->form_validation->set_rules('cli_password', 'mot de passe', 'trim|required|min_length[8]|max_length[12]',
                         array(
                             'required' => '%s incorect',
                             'min_length'=>'Le mot de passe doit contenir 8 caractere minimum',
                             'max_length'=>'Le mot de passe doit contenir 12 caractere maximum'
                             )
                      );
-                $this->form_validation->set_rules('u_conf_mdp', 'Confirmez', 'trim|required|matches[u_mdp]|min_length[8]|max_length[12]', 
+                $this->form_validation->set_rules('cli_conf_password', 'Confirmez', 'trim|required|matches[cli_password]|min_length[8]|max_length[12]', 
                         array(
                             "required" => " %s votre mot de passe.",
                             'min_length'=>'Le mot de passe doit contenir 8 caractere minimum',
@@ -48,12 +75,14 @@ class Form extends CI_Controller
                             'matches' => 'Les mot de passe ne sont pas identique'
                         )
                     );
-                $this->form_validation->set_rules('u_email', 'Email', 'trim|required|valid_email',
+                $this->form_validation->set_rules('cli_mail', 'Email', 'trim|required|valid_email',
                         array(
                             "required" => " %s invalide.",
                             "valid_email" => "Email non valide"
                         )
                     );
+
+            
                     if ($this->form_validation->run() == FALSE)
                     { // Echec de la validation, on réaffiche la vue formulaire 
             
@@ -62,7 +91,7 @@ class Form extends CI_Controller
                     else
                     { // La validation a réussi, nos valeurs sont bonnes, on peut insérer en base
             
-                        $this->db->insert('utilisateurs', $data);
+                        $this->db->insert('client', $data);
             
                         redirect("form/myform");
                     }       

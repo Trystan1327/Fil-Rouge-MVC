@@ -15,7 +15,7 @@ CREATE TABLE fournisseur(
    fou_ville VARCHAR(50),
    fou_tel VARCHAR(10),
    PRIMARY KEY(fou_id)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE categorie(
    cat_id INT AUTO_INCREMENT NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE categorie(
    cat_paren_id INT NULL,
    PRIMARY KEY(cat_id),
    FOREIGN KEY(cat_paren_id) REFERENCES categorie(cat_id)
-);
+) ENGINE = InnoDB ;
 
 CREATE TABLE commerciaux(
    commerciaux_id INT AUTO_INCREMENT NOT NULL,
@@ -32,26 +32,26 @@ CREATE TABLE commerciaux(
    commerciaux_prenom VARCHAR(50),
    commerciaux_type VARCHAR(50),
    PRIMARY KEY(commerciaux_id)
-);
+) ENGINE = InnoDB ;
 
 CREATE TABLE client(
    cli_id INT AUTO_INCREMENT NOT NULL,
+   cli_nom VARCHAR(50),
+   cli_type VARCHAR(50),
    cli_adresse VARCHAR(50),
    cli_codepostal VARCHAR(50),
    cli_ville VARCHAR(50),
    cli_password VARCHAR(50),
+   cli_conf_password VARCHAR(50),
    cli_mail VARCHAR(50),
-   cli_type VARCHAR(50),
-   cli_nom VARCHAR(50),
    cli_adresse_facturation VARCHAR(50),
-   cli_ref VARCHAR(50),
    cli_adresse_livraison VARCHAR(50),
    cli_coef DECIMAL(15,2),
    cli_prenom VARCHAR(50),
    commerciaux_id INT NOT NULL,
    PRIMARY KEY(cli_id),
    FOREIGN KEY(commerciaux_id) REFERENCES commerciaux(commerciaux_id)
-);
+) ENGINE = InnoDB ;
 
 CREATE TABLE commande(
    cmde_id INT AUTO_INCREMENT NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE commande(
    cli_id INT NOT NULL,
    PRIMARY KEY(cmde_id),
    FOREIGN KEY(cli_id) REFERENCES client(cli_id)
-);
+) ENGINE = InnoDB ;
 
 CREATE TABLE produits(
    pro_id INT AUTO_INCREMENT NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE produits(
    cat_id INT NOT NULL,
    PRIMARY KEY(pro_id),
    FOREIGN KEY(cat_id) REFERENCES categorie(cat_id)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE Livraison(
    livraison_id INT AUTO_INCREMENT NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE Livraison(
    cmde_id INT NOT NULL,
    PRIMARY KEY(livraison_id),
    FOREIGN KEY(cmde_id) REFERENCES commande(cmde_id)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE fourni(
    pro_id INT,
@@ -98,7 +98,7 @@ CREATE TABLE fourni(
    PRIMARY KEY(pro_id, fou_id),
    FOREIGN KEY(pro_id) REFERENCES produits(pro_id),
    FOREIGN KEY(fou_id) REFERENCES fournisseur(fou_id)
-);
+) ENGINE = InnoDB ;
 
 CREATE TABLE composer(
    pro_id INT,
@@ -107,7 +107,7 @@ CREATE TABLE composer(
    PRIMARY KEY(pro_id, cmde_id),
    FOREIGN KEY(pro_id) REFERENCES produits(pro_id),
    FOREIGN KEY(cmde_id) REFERENCES commande(cmde_id)
-);
+)  ENGINE = InnoDB ;
 
 CREATE TABLE contient(
    pro_id INT,
@@ -115,4 +115,4 @@ CREATE TABLE contient(
    PRIMARY KEY(pro_id, livraison_id),
    FOREIGN KEY(pro_id) REFERENCES produits(pro_id),
    FOREIGN KEY(livraison_id) REFERENCES Livraison(livraison_id)
-);
+) ENGINE = InnoDB ;
